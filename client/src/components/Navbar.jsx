@@ -36,13 +36,13 @@ function Navbar() {
         initial={{opacity:0 , y:-40}}
         animate={{opacity:1 , y:0}}
         transition={{duration: 0.3}}
-        className='w-full max-w-6xl bg-white rounded-3xl shadow-sm border border-gray-200 px-8 py-4 flex justify-between items-center relative'>
+        className='w-full max-w-6xl bg-white rounded-[24px] shadow-sm border border-gray-200 px-8 py-4 flex justify-between items-center relative'>
             <div className='flex items-center gap-3 cursor-pointer'>
                 <div className='bg-black text-white p-2 rounded-lg'>
                     <BsRobot size={18}/>
 
                 </div>
-                <h1 className='font-semibold hidden md:block text-lg'>InterviewIQ.AI</h1>
+                <h1 className='font-semibold hidden md:block text-lg'>Online Interview</h1>
             </div>
 
             <div className='flex items-center gap-6  relative'>
@@ -56,7 +56,7 @@ function Navbar() {
                         setShowUserPopup(false)
                     }} className='flex items-center gap-2 bg-gray-100 px-4 py-2 rounded-full text-md hover:bg-gray-200 transition'>
                         <BsCoin size={20}/>
-                        {userData?.credits || 0}
+                        {userData?.credits || 100}
                     </button>
 
                     {showCreditPopup && (
@@ -86,7 +86,7 @@ function Navbar() {
                         <div className='absolute right-0 mt-3 w-48 bg-white shadow-xl border border-gray-200 rounded-xl p-4 z-50'>
                             <p className='text-md text-blue-500 font-medium mb-1'>{userData?.name}</p>
 
-                            <button onClick={()=>navigate("/history")} className='w-full text-left text-sm py-2 hover:text-black text-gray-600'>InterView History</button>
+                            <button onClick={()=>navigate("/history")} className='w-full text-left text-sm py-2 hover:text-black text-gray-600'>Interview History</button>
                             <button onClick={handleLogout} 
                             className='w-full text-left text-sm py-2 flex items-center gap-2 text-red-500'>
                                 <HiOutlineLogout size={16}/>
@@ -108,3 +108,4 @@ function Navbar() {
 }
 
 export default Navbar
+

@@ -9,7 +9,7 @@ import {
 } from "react-icons/fa";
 import { useState } from 'react';
 import axios from "axios"
-import { ServerUrl } from '../App';
+import {ServerUrl} from "../App.jsx"
 import { useDispatch, useSelector } from 'react-redux';
 import { setUserData } from '../redux/userSlice';
 function Step1SetUp({ onStart }) {
@@ -55,27 +55,35 @@ function Step1SetUp({ onStart }) {
     }
 
     const handleStart = async () => {
-        setLoading(true)
-        try {
-           const result = await axios.post(ServerUrl + "/api/interview/generate-questions" , {role, experience, mode , resumeText, projects, skills } , {withCredentials:true}) 
-           console.log(result.data)
-           if(userData){
-            dispatch(setUserData({...userData , credits:result.data.creditsLeft}))
-           }
-           setLoading(false)
-           onStart(result.data)
-
-        } catch (error) {
-            console.log(error)
-            setLoading(false)
+    setLoading(true)
+    try {
+        // Removed the word "payload" and made the object the 2nd argument
+        const result = await axios.post(
+            ServerUrl + "/api/interview/generate-questions", 
+            { role, experience, mode, resumeText, projects, skills }, 
+            { withCredentials: true }
+        ) 
+        
+        console.log(result.data)
+        
+        if (userData) {
+            dispatch(setUserData({ ...userData, credits: result.data.creditsLeft }))
         }
+        
+        setLoading(false)
+        onStart(result.data)
+
+    } catch (error) {
+        console.log(error)
+        setLoading(false)
     }
+}
     return (
         <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
-            className='min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200 px-4'>
+            className='min-h-screen flex items-center justify-center bg-linear-to-br from-gray-100 to-gray-200 px-4'>
 
             <div className='w-full max-w-6xl bg-white rounded-3xl shadow-2xl grid md:grid-cols-2 overflow-hidden'>
 
@@ -83,7 +91,7 @@ function Step1SetUp({ onStart }) {
                     initial={{ x: -80, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 0.7 }}
-                    className='relative bg-gradient-to-br from-green-50 to-green-100 p-12 flex flex-col justify-center'>
+                    className='relative bg-linear-to-br from-green-50 to-green-100 p-12 flex flex-col justify-center'>
 
                     <h2 className="text-4xl font-bold text-gray-800 mb-6">
                         Start Your AI Interview
@@ -99,7 +107,7 @@ function Step1SetUp({ onStart }) {
                         {
                             [
                                 {
-                                    icon: <FaUserTie className="text-green-600 text-xl" />,
+                                    icon: <FaUserTie className="text-yellow-600 text-xl" />,
                                     text: "Choose Role & Experience",
                                 },
                                 {

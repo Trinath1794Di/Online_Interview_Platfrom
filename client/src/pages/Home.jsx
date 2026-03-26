@@ -23,7 +23,6 @@ import pdfImg from "../assets/pdf.png";
 import analyticsImg from "../assets/history.png";
 import Footer from '../components/Footer';
 
-
 function Home() {
   const { userData } = useSelector((state) => state.user)
   const [showAuth, setShowAuth] = useState(false);

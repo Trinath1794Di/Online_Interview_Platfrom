@@ -9,8 +9,7 @@ import { useRef } from 'react'
 import { useEffect } from 'react'
 import axios from "axios"
 import { ServerUrl } from '../App'
-import { BsArrowRight } from 'react-icons/bs'
-
+import { BsArrowRight } from 'react-icons/bs' 
 function Step2Interview({ interviewData, onFinish }) {
   const { interviewId, questions, userName } = interviewData;
   const [isIntroPhase, setIsIntroPhase] = useState(true);

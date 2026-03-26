@@ -9,9 +9,13 @@ import userRouter from "./routes/user.route.js"
 import interviewRouter from "./routes/interview.route.js"
 
 
-const app = express()
+
+
+const app = express();
+
+
 app.use(cors({
-    origin:"http://localhost:5174",
+    origin:["http://localhost:5173"],
     credentials:true
 }))
 
@@ -24,7 +28,7 @@ app.use("/api/interview" , interviewRouter)
 
 
 const PORT = process.env.PORT 
-app.listen(PORT , ()=>{
+app.listen(PORT , () =>{
     console.log(`Server running on port ${PORT}`)
     connectDb();
 })
