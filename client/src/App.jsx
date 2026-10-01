@@ -11,7 +11,7 @@ import InterviewHistory from './pages/InterviewHistory'
 import InterviewReport from './pages/InterviewReport'
 
 
-export const ServerUrl  = "http://localhost:3000"
+export const ServerUrl = import.meta.env.VITE_API_URL?.replace(/\/+$/, '')
 
 function App() {
 
